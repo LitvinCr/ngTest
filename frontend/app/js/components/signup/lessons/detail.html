@@ -1,0 +1,26 @@
+<div class="signUpColumns animated fadeInDown">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox-title text-center">
+                <h1 class="m-b-md">Lesson view</h1>
+                <em class="notation block m-b" ng-bind="vm.lesson.title"></em>
+                <small class="sub_note block m-b" ng-bind="vm.lesson.info.name"></small>
+                <button type="button" ng-click="main.logOut()" class="btn btn-sticky btn-primary m-b">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+                <a ui-sref="signup.confirmation" class="btn btn-sticky left btn-primary m-b">Back to plan</a>
+            </div>
+            <div class="ibox-content">
+                <div class="video-holder m-b" resize-frame>
+                    <iframe class="video-frame" width="560" height="320"
+                            ng-src="{{trustSrc('https://www.youtube.com/embed/' + vm.lesson.info.youtubeId)}}"
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="clearfix text-right">
+                    <a ng-href="{{vm.lesson.info.presentationUrl}}" target="_blank" type="button" class="btn btn-success m-b btn-middle-size">Presentation</a>
+                    <a ng-href="{{vm.lesson.info.planUrl}}" target="_blank" type="button" class="btn btn-primary m-b m-l-sm btn-middle-size">Lesson Plan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="inmodal">
+    <form ng-validate="vm.teachersValidator" name="teacherForm" ng-submit="vm.submit(teacherForm)">
+        <div class="modal-header">
+            Teacher management
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group clearfix">
+                <label class="control-label col-md-2">First name:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="firstName" ng-model="vm.TeacherModel.firstName">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label col-md-2">Last name:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" name="lastName" ng-model="vm.TeacherModel.lastName">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="control-label col-md-2">Email:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="email" name="email" ng-model="vm.TeacherModel.email">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" ng-click="closeThisDialog()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+

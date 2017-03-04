@@ -1,0 +1,22 @@
+<table class="table table-fixed text-center main-table no-borders">
+    <thead>
+        <tr class="text-center primary-bg">
+            <th></th>
+            <th ng-repeat="type in constants.COURSE_TYPE" ng-bind="type.name"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="period in constants.PERIOD_OF_PLAN">
+            <td class="primary-bg">
+                <span ng-bind="period.name"></span>
+            </td>
+            <td ng-repeat="type in constants.COURSE_TYPE">
+                <div class="course-name">
+                    <a ng-click="openDialog(plans.coursesByType[period.type + '_' + type.type])">
+                        {{plans.coursesByType[period.type + '_' + type.type].name}}
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

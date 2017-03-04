@@ -1,0 +1,136 @@
+<div class="table-holder m-b-xl assessments-table">
+    <table class="footable table table-bordered" data-paging-size="40" data-page-size="40">
+        <thead>
+        <tr>
+            <td></td>
+            <td ng-repeat="type in constants.COURSE_TYPE" class="assessment-type-{{type.type}}"
+                colspan="{{activeTemplate.assessmentsByBlocks[$index].assessments.length < constants.ASSESSMENTS.MAX_COUNT ?
+                            activeTemplate.assessmentsByBlocks[$index].assessments.length + 1 :
+                            activeTemplate.assessmentsByBlocks[$index].assessments.length}}">
+                {{type.name}}
+            </td>
+        </tr>
+
+        <tr>
+            <th>Student</th>
+
+            <th class="rotate-wr selected-school-course class-criteria assessment-type-1"
+                ng-repeat="assessment in activeTemplate.assessmentsByBlocks[0].assessments">
+
+                <div class="rotate">{{assessment.title}}</div>
+
+                <i class="fa fa-close" aria-hidden="true"
+                   ng-if="activeTemplate.assessmentsByBlocks[0].assessments.length > constants.ASSESSMENTS.MIN_COUNT"
+                   ng-click="removeAssessment({data: {assessmentsBlock: 0,index: $index}})"
+                ></i>
+
+                <i class="fa fa-edit" aria-hidden="true"
+                   ng-click="editAssessmentModal({data: 0, assessment: assessment})"
+                ></i>
+            </th>
+            <th ng-if="activeTemplate.assessmentsByBlocks[0].assessments.length < constants.ASSESSMENTS.MAX_COUNT" class="text-center">
+                <i class="fa fa-plus" ng-click="createAssessmentModal({data: 0, type: constants.COURSE_TYPE[0].type})"></i>
+            </th>
+
+
+            <th class="rotate-wr selected-school-course class-criteria assessment-type-2"
+                ng-repeat="assessment in activeTemplate.assessmentsByBlocks[1].assessments">
+                <div class="rotate">{{assessment.title}}</div>
+
+                <i class="fa fa-close" aria-hidden="true"
+                   ng-if="activeTemplate.assessmentsByBlocks[1].assessments.length > constants.ASSESSMENTS.MIN_COUNT"
+                   ng-click="removeAssessment({data: {assessmentsBlock: 1,index: $index}})"
+                ></i>
+
+                <i class="fa fa-edit" aria-hidden="true"
+                   ng-click="editAssessmentModal({data: 1, assessment: assessment})"
+                ></i>
+            </th>
+            <th ng-if="activeTemplate.assessmentsByBlocks[1].assessments.length < constants.ASSESSMENTS.MAX_COUNT" class="text-center">
+                <i class="fa fa-plus" ng-click="createAssessmentModal({data: 1,type: constants.COURSE_TYPE[1].type})"></i>
+            </th>
+
+
+            <th class="rotate-wr selected-school-course class-criteria assessment-type-3"
+                ng-repeat="assessment in activeTemplate.assessmentsByBlocks[2].assessments">
+                <div class="rotate">{{assessment.title}}</div>
+
+                <i class="fa fa-close" aria-hidden="true"
+                   ng-if="activeTemplate.assessmentsByBlocks[2].assessments.length > constants.ASSESSMENTS.MIN_COUNT"
+                   ng-click="removeAssessment({data: {assessmentsBlock: 2,index: $index}})"
+                ></i>
+
+                <i class="fa fa-edit" aria-hidden="true"
+                   ng-click="editAssessmentModal({data: 2, assessment: assessment})"
+                ></i>
+            </th>
+            <th ng-if="activeTemplate.assessmentsByBlocks[2].assessments.length < constants.ASSESSMENTS.MAX_COUNT" class="text-center">
+                <i class="fa fa-plus" ng-click="createAssessmentModal({data: 2,type: constants.COURSE_TYPE[2].type})"></i>
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="student in classData.students">
+            <td class="assessments-table-td-student">
+                <span>{{student.firstName}} {{student.lastName}}</span>
+            </td>
+
+            <td ng-class="'background-' + student.formatAssessments[student.id + '_' +assessment.id].data.color"
+                ng-repeat="assessment in activeTemplate.assessmentsByBlocks[0].assessments">
+
+                <div
+                        ng-if="!disabledFunctions || !disabledFunctions.studentAssessment"
+                        dropdown-select="constants.ASSESSMENTS_TYPES"
+                        dropdown-item-label="title"
+                        dropdown-onchange="onAssessmentChange({data: {
+                            selected: selected,
+                             assessment: assessment,
+                             student: student}})"
+                        dropdown-model="{}"
+                ></div>
+            </td>
+            <td class="assessments-table-td-separator" ng-if="activeTemplate.assessmentsByBlocks[0].assessments.length < constants.ASSESSMENTS.MAX_COUNT"></td>
+
+            <td ng-class="'background-' + student.formatAssessments[student.id + '_' +assessment.id].data.color"
+                ng-repeat="assessment in activeTemplate.assessmentsByBlocks[1].assessments">
+
+                <div
+                        ng-if="!disabledFunctions || !disabledFunctions.studentAssessment"
+                        dropdown-select="constants.ASSESSMENTS_TYPES"
+                        dropdown-item-label="title"
+                        dropdown-onchange="onAssessmentChange({data: {
+                            selected: selected,
+                             assessment: assessment,
+                             student: student}})"
+                        dropdown-model="{}"
+                ></div>
+            </td>
+            <td class="assessments-table-td-separator" ng-if="activeTemplate.assessmentsByBlocks[1].assessments.length < constants.ASSESSMENTS.MAX_COUNT"></td>
+
+
+            <td ng-class="'background-' + student.formatAssessments[student.id + '_' +assessment.id].data.color"
+                ng-repeat="assessment in activeTemplate.assessmentsByBlocks[2].assessments">
+
+                <div
+                        ng-if="!disabledFunctions || !disabledFunctions.studentAssessment"
+                        dropdown-select="constants.ASSESSMENTS_TYPES"
+                        dropdown-item-label="title"
+                        dropdown-onchange="onAssessmentChange({data: {
+                            selected: selected,
+                             assessment: assessment,
+                             student: student}})"
+                        dropdown-model="{}"
+                ></div>
+            </td>
+            <td class="assessments-table-td-separator" ng-if="activeTemplate.assessmentsByBlocks[2].assessments.length < constants.ASSESSMENTS.MAX_COUNT"></td>
+        </tr>
+
+        <tr>
+            <td class="cursor-pointed" ng-click="createStudentModal()">
+                <i class="fa fa-plus" aria-hidden="true"></i> Create new student
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

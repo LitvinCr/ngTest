@@ -1,0 +1,29 @@
+<table class="table table-striped table-bordered table-hover dataTable" ng-if="vm.items.length">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th data-field="fullname">Name</th>
+        <th data-field="fullname">Teacher</th>
+        <th data-field="fullname">Created at</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in vm.items">
+        <td>{{ filters.offset + $index + 1 }}</td>
+        <td>
+            <a ui-sref="index.classInfo({ id: item.id })">{{ item.name }}</a>
+        </td>
+        </td>
+        <td>
+            {{item.teacher.firstName}} {{item.teacher.lastName}}
+        </td>
+        <td>
+            {{item.createdAt | formatDate}}
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div ng-if="!vm.items.length" class="empty-message">
+    Your teachers have not created any classes yet
+</div>

@@ -1,0 +1,52 @@
+<div>
+    <table class="table table-fixed content-table table-sorted text-center table-bordered" ng-if="!sortedTable">
+        <thead>
+        <tr class="text-center gray-bg">
+            <th></th>
+            <th ng-repeat="type in constants.COURSE_TYPE" ng-click="sortTable(type, constants.PLAN_SORT.TYPE)">
+                {{type.name}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="period in constants.PERIOD_OF_PLAN">
+            <td class="gray-bg desrc-col" ng-click="sortTable(period, constants.PLAN_SORT.PERIOD)">
+                {{period.name}}
+            </td>
+            <td ng-repeat="type in constants.COURSE_TYPE">
+                <a ui-sref="index.schoolPlan.lessons({
+                    id: plans.coursesByType[period.type + '_' + type.type].id
+                })">
+                    {{plans.coursesByType[period.type + '_' + type.type].name}}
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-fixed content-table table-sorted text-center table-bordered" ng-if="sortedTable">
+        <thead>
+        <tr class="text-center gray-bg">
+            <th ng-click="refreshSort()">
+                Refresh sort
+            </th>
+            <th ng-repeat="row in headerRows" ng-click="sortTable(row, sortType)">
+                {{row.name}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in bodyRows">
+            <td class="gray-bg desrc-col" ng-click="sortTable(row, sortType)">
+                {{row.name}}
+            </td>
+            <td ng-repeat="cell in headerRows">
+                <a ui-sref="index.schoolPlan.lessons({id: plans.coursesByType[cell.type + '_' + row.type].id})">
+                    {{plans.coursesByType[cell.type + '_' + row.type].name}}
+                </a>
+            </td>
+        </tr>
+        </tbody>
+        
+    </table>
+</div>

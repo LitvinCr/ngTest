@@ -1,0 +1,17 @@
+<div class="discount-content">
+    <div class="modal-title">New Site Launching Soon!</div>
+    <div class="modal-subtitle">10% Discount for all Early Subscribers</div>
+
+    <form ng-if="!vm.submitted" class="form-inline text-center" ng-validate="vm.discountValidator" name="discountForm" ng-submit="vm.submitDiscount(discountForm)">
+        <div class="form-group">
+            <input class="form-control" name="email" ng-model="vm.DiscountModel.email" placeholder="Email" type="email">
+        </div>
+
+        <button type="submit" class="btn submit-discount-btn">Submit</button>
+    </form>
+
+    <div ng-if="vm.submitted" class="text-center">
+        <p>Congrats!</p>
+        <p>Thank you for subscribing</p>
+    </div>
+</div>

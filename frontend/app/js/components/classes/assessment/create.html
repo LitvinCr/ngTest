@@ -1,0 +1,22 @@
+<div class="inmodal">
+    <div class="col-md-12">
+        <div class="inbox-title">
+            <h2>Add class assessment</h2>
+        </div>
+        <form class="main-form" ng-submit="vm.createAssessment(assessmentForm)" ng-validate="validationOptions" name="assessmentForm" id="assessment-form">
+            <div class="form-group">
+                <input class="form-control"
+                       type="text"
+                       placeholder="Assessment name"
+                       ng-model="vm.assessment.title"
+                       name="assessmentName"
+                       id="assessmentName"
+                >
+            </div>
+            <div class="text-right">
+                <button ng-click="vm.cancel()" class="btn btn-white">Cancel</button>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>

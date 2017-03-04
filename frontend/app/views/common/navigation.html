@@ -1,0 +1,12 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul ng-if="$root.isPrincipal()" side-navigation class="nav metismenu" id="side-menu" ng-include="'views/common/navigation/principal.html'"></ul>
+        <ul ng-if="$root.isTeacher()" side-navigation class="nav metismenu" id="side-menu" ng-include="'views/common/navigation/teacher.html'"></ul>
+        <ul ng-if="$root.isStudent()" side-navigation class="nav metismenu" id="side-menu" ng-include="'views/common/navigation/student.html'"></ul>
+
+        <a ng-if="$root.isPrincipal() || $root.isTeacher()" ui-sref="home.main" class="btn btn-primary home-btn">
+            <i class="fa fa-home"></i>
+            <span class="text">Homepage</span>
+        </a>
+    </div>
+</nav>

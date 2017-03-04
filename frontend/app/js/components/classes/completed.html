@@ -1,0 +1,16 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-12">
+            <h2>{{pageTitle}}</h2>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <classes-list
+                    classes-list-data="vm.classes"
+                    classes-list-pagination="vm.classesPagination"
+                    classes-list-get-content="vm.getClasses(page)"
+            ></classes-list>
+        </div>
+    </div>
+</div>

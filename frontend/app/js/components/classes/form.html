@@ -1,0 +1,136 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-12">
+            <h2>{{pageTitle}}</h2>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+            <div class="col-lg-12">
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Edit class</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal" ng-validate="vm.classValidationRules" name="classForm"
+                              ng-submit="vm.submit(classForm)">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <input type="text" placeholder="Class name" name="name"
+                                               ng-model="vm.classData.name" class="form-control">
+                                    </div>
+                                </div>
+                                <h3 class="inline">Overall class account:</h3>
+                                <div class="form-group">
+
+                                    <div class="col-md-4">
+                                        <input type="email" placeholder="Email" name="email"
+                                               ng-model="vm.classData.email" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="password" placeholder="Password" name="password" id="password"
+                                               ng-model="vm.classData.password" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="password" placeholder="Confirm password" name="confirmPassword"
+                                               ng-model="vm.classData.confirmPassword" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <h3 class="inline">Courses:</h3>
+                                        <div type="button" class="btn selected-school-course select-class-course-btn"
+                                             ng-repeat="courseData in vm.classData.courses">
+                                            {{courseData.course.name|truncate:15}}
+                                            <i class="fa fa-close" ng-click="vm.removeCourse($index)"
+                                               aria-hidden="true"></i>
+                                        </div>
+                                        <a ng-click="vm.openSelectCourseModal()"
+                                           class="btn btn-success select-class-course-btn"
+                                           ng-if="!vm.classData.courses.length || vm.classData.courses.length < vm.constants.MAX_COURSES_IN_SCHOOL">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            Select course
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="course-details table-fixed table table-bordered">
+                                            <tbody>
+                                                <tr class="thead">
+                                                    <td rowspan="2">
+                                                        <strong>COURSE DETAILS</strong>
+                                                    </td>
+                                                    <td>Teacher name</td>
+                                                    <td>Class/Year</td>
+                                                    <td>CS - Course Name and Level</td>
+                                                    <td>DL - Course Name and Level</td>
+                                                    <td>IT - Course Name and Level</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="teacherName" ng-model="vm.classData.classDetails.teacherName" placeholder="Type here">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="classYear" ng-model="vm.classData.classDetails.classYear" placeholder="Type here">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="cs" ng-model="vm.classData.classDetails.cs" placeholder="Type here">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="dl" ng-model="vm.classData.classDetails.dl" placeholder="Type here">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control" name="it" ng-model="vm.classData.classDetails.it" placeholder="Type here">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <assessments-detail-info></assessments-detail-info>
+                                    </div>
+                                </div>
+                                <div class="row assessment-wr">
+                                    <div class="col-md-12">
+                                        <div class="btn-group">
+                                            <button class="btn" type="button"
+                                                    ng-repeat="item in vm.assTemplates"
+                                                    ng-click="vm.setActiveTemplate(item)"
+                                                    ng-class="{'btn-primary': item.isActive, 'btn-white': !item.isActive}">
+                                                {{item.title}}
+                                            </button>
+                                        </div>
+
+                                        <assessment-document
+                                                assessment-document-active-tpl="vm.activeTemplate"
+                                                assessment-document-class="vm.classData"
+                                                assessment-document-create-student="vm.createStudentModal()"
+                                                assessment-document-create-assessment="vm.createAssessmentModal(data, type)"
+                                                assessment-document-edit-assessment="vm.editAssessmentModal(data, assessment)"
+                                                assessment-document-disabled-functions="vm.assessmentDocumentConfig"
+                                                assessment-document-remove-assessment="vm.removeAssessment(data)"
+                                        >
+                                        </assessment-document>
+                                    </div>
+                                </div>
+
+                                <div class="pull-right">
+                                    <a ui-sref="index.class" class="btn btn-white" type="submit">Cancel</a>
+                                    <button class="btn btn-primary inline" type="submit">Save changes</button>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

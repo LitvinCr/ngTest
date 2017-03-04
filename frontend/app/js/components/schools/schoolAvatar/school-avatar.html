@@ -1,0 +1,20 @@
+<div>
+    <div ng-if="avatarToCrop">
+
+        <image-cropper ng-if="avatarToCrop" image-url="{{avatarToCrop}}"
+                       width="220"
+                       height="220"
+                       show-controls="true"
+                       fit-on-init="true"
+                       center-on-init="true"
+                       api="getApiFunction"
+                       crop-callback="onCrop"
+                       check-cross-origin="false"
+                       zoom-step="0.01"
+                       action-labels="actionLabels"
+        ></image-cropper>
+    </div>
+</div>
+<div class="ngdialog-close"></div>
+
+

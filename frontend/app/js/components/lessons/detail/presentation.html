@@ -1,0 +1,20 @@
+<a ng-if="!$root.isStudent()" ui-sref="index.schoolPlan.lessons.detail.base({id: vm.lesson.id, courseId: vm.lesson.course.id})" class="btn btn-primary pull-left">Back</a>
+<a ng-if="$root.isStudent()" ui-sref="index.studentClasses.lesson.base({id: vm.lesson.id, courseId: vm.lesson.course.id})" class="btn btn-primary pull-left">Back</a>
+
+<div class="lesson-icon-wr">
+    <span class="lesson-icon presentation-icon"></span>
+    <strong>Start Presentation</strong>
+</div>
+
+<div class="clearfix"></div>
+
+<h2>{{vm.lesson.course.name}}</h2>
+<h3>{{vm.lesson.name}}</h3>
+
+<iframe src="{{vm.lesson.presentationUrl + '/embed?start=false&loop=false&delayms=3000' | trustUrl}}"
+        class="full-width"
+        frameborder="0"
+        height="750"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"></iframe>

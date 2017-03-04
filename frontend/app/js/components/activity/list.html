@@ -1,0 +1,63 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-12">
+            <h2>{{pageTitle}}</h2>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content">
+        <div class="row animated fadeInRight">
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Teachers Management</h5>
+                        <div class="pull-right">
+                            <button class="btn btn-primary" ng-click="vm.openForm()">Add</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="table-responsive dataTables_wrapper form-inline dt-bootstrap" data-table-init ng-show="vm.dataSetReady">
+                            <!--<div items-on-page></div>-->
+                            <!--<div table-search></div>-->
+
+                            <table class="table table-striped table-bordered table-hover dataTable" >
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th ordering-column data-field="firstName">First name</th>
+                                    <th ordering-column data-field="lastName">Last name</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in vm.items">
+                                    <td>{{ filters.offset + $index + 1 }}</td>
+                                    <td>{{ item.firstName }}</td>
+                                    <td>{{ item.lastName }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td class="table-actions">
+                                        <a ng-click="vm.openForm($index)" title="Edit"><i class="fa fa-edit"></i></a>
+                                        <a ng-click="vm.askDelete(item.id, 'deleteTeacher')" title="Remove"><i class="fa fa-remove"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!--<div table-pagination></div>-->
+                        </div>
+
+                        <div ng-if="!vm.items.length" class="empty-message">
+                            You haven't created any teachers yet
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

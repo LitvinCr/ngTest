@@ -1,0 +1,632 @@
+.italic {
+    font-style: italic;
+}
+
+.homepage {
+    padding: 0;
+    color: #727272;
+}
+
+.homepage .user-block {
+    text-align: right;
+    padding: 0 0 40px 0;
+}
+
+.homepage-header {
+    margin: 10px 0;
+    text-align: center;
+    color: #000;
+}
+
+.homepage-header .title {
+    color: #000;
+    letter-spacing: 4px;
+    font-size: 22px;
+    float: left;
+    margin: 0;
+}
+
+.homepage-header .subtitle {
+    letter-spacing: 5px;
+    font-size: 15px;
+    line-height: 22px;
+    float: right;
+    margin: 0;
+}
+
+.home-nav {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+.home-nav a {
+    color: #2c2c2b;
+}
+
+.home-nav a.active,
+.home-nav a:hover {
+    color: #cf4b32;
+}
+
+
+.home-gallery {
+
+}
+
+.home-gallery .gallery-row {
+    margin: -140px 0 0;
+    text-align: center;
+}
+
+.home-gallery .gallery-row:first-child {
+    margin: 0;
+}
+
+.home-gallery .gallery-cell {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.home-gallery .gallery-cell img {
+    width: 100%;
+    height: 100%;
+}
+
+.hexagon {
+    display: inline-block;
+    overflow: hidden;
+    visibility: hidden;
+    -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
+    transform: rotate(120deg);
+    cursor: pointer;
+    width: 200px;
+    height: 400px;
+    margin: -80px 0 0 20px;
+}
+.hexagon-in1 {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -ms-transform: rotate(-60deg);
+    -o-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}
+.hexagon-in2 {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 400px;
+    visibility: visible;
+    -webkit-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -ms-transform: rotate(-60deg);
+    -o-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}
+
+.lightbox-image-container {
+    overflow: hidden;
+}
+
+.page-title-wr {
+    margin-bottom: 20px;
+}
+
+.page-title {
+    margin: 0 0 15px;
+    font-size: 34px;
+    line-height: 48px;
+    font-weight: 400;
+}
+
+.page-nav li {
+    margin-bottom: 10px;
+}
+
+.page-content .page-nav a {
+    font-size: 18px;
+    color: #727272;
+    text-decoration: none;
+}
+
+.page-nav a.active,
+.page-nav a:hover {
+    color: #cf4b32;
+}
+
+.page-nav .subtitle {
+    display: block;
+}
+
+.page-content {
+    font-size: 15px;
+    padding-bottom: 30px;
+}
+
+.page-content a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: #727272;
+}
+
+.page-content a:hover {
+    text-decoration: none;
+}
+
+.page-content .aside-image {
+    margin-bottom: 15px;
+}
+
+.page-content img {
+    width: 100%;
+}
+
+.page-content .section-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.page-content .title-note {
+    display: block;
+    margin: 10px 0 40px;
+}
+
+.page-content .content-image {
+    text-align: center;
+}
+
+.page-content .content-image img {
+    width: auto;
+}
+
+.page-content strong {
+    color: #000;
+    font-weight: 600;
+}
+
+.page-content ul ul {
+    margin-bottom: 10px;
+}
+
+.page-content ul.circle li {
+    list-style: circle;
+}
+
+
+.tac {
+    text-align: center;
+}
+
+.curriculum-list {
+    padding-top: 20px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.curriculum-list a {
+    color: #727272;
+}
+
+/* ======================== Landing page ========================= */
+.blocks-title {
+    margin: 0 0 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #727272;
+}
+
+.landing-nav {
+    margin: 0 0 30px;
+    padding: 15px 0;
+}
+
+.landing-nav .item {
+
+}
+
+.landing-nav a,
+.landing-nav span{
+    color: #727272;
+    cursor: pointer;
+}
+
+
+.ellipse {
+    display: inline-block;
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 200px / 100px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 3px rgba(0,0,0, 0.8);
+}
+
+.ellipse img {
+    cursor: pointer;
+}
+
+.page-content section {
+    margin-bottom: 80px;
+}
+
+
+
+.teach-features {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap;
+    height: 395px;
+}
+
+.teach-features .item {
+    width: 45%;
+    padding: 20px 10px;
+    text-align: center;
+    background: #FBFBFB;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+
+.pricing-block {
+    text-align: center;
+}
+
+.pricing-block .title {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #454141;
+}
+
+.pricing-block .section-title {
+    margin-bottom: 40px;
+}
+
+.price-list {
+    text-align: center;
+    position: relative;
+}
+
+.price-list li {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 3px;
+    width: 20%;
+}
+
+.price-list .price-btn {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #D0EEFE;
+    color: #586067;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 0 2px 3px rgba(92, 92, 92, 0.2);
+    position: relative;
+}
+
+.price-list .price-btn.active {
+    background: #3480AA;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+}
+
+.price-list .price-btn.active:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 10px;
+    z-index: 1;
+    background: #3480AA;
+}
+
+.pricing-block .price-content {
+    text-align: center;
+    color: #727272;
+}
+
+.pricing-block .price-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin: 0 1px;
+    padding: 20px 0;
+    background: #FBFBFB;
+    position: relative;
+}
+
+.pricing-block .price-item:after {
+    content: '';
+    display: block;
+    width: 2px;
+    background: #ECEDEC;
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 0;
+    z-index: 1;
+}
+
+.pricing-block .price-item:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    background: #FBFBFB;
+    z-index: -1;
+}
+
+
+.pricing-block .price-item:first-child:before,
+.pricing-block .price-item:first-child:after {
+    display: none;
+}
+
+.pricing-block .title {
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.pricing-block .price {
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.page-footer {
+    padding: 20px 0 30px;
+}
+
+.page-footer a {
+    color: #727272;
+}
+
+.footer-nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-nav span {
+    cursor: pointer;
+}
+
+
+.modal-title {
+    text-align: center;
+    font-size: 28px;
+}
+
+.modal-subtitle {
+    text-align: center;
+    font-size: 22px;
+    margin: 10px 0 100px;
+}
+
+.video-modal {
+    padding: 0 !important;
+}
+
+.video-modal .ngdialog-content {
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 1% 10% !important;
+}
+
+
+.login-modal {
+
+}
+
+.login-modal .ngdialog-content {
+    background: #fff !important;
+    padding: 1em 70px !important;
+}
+
+.login-modal .ngdialog-content .btn-primary {
+    margin-top: 30px;
+}
+
+.login-modal .ngdialog-content .btn-primary,
+.login-modal .ngdialog-content .btn-primary:active {
+    background: #3480AA;
+    border-color: #3480AA;
+}
+
+.login-modal .ngdialog-content .form-control {
+    background: #FBFBFB;
+    border-radius: 3px;
+}
+
+.login-modal .ngdialog-content .form-control:focus {
+    border-color: #3480AA !important;
+}
+
+.discount-modal .ngdialog-content {
+    width: 30% !important;
+    background: #fff !important;
+    padding: 1em !important;
+    border-radius: 0 !important;
+}
+
+.discount-modal .discount-content {
+    padding: 80px 20px;
+    border: 1px solid #000;
+}
+
+.discount-modal .ngdialog-close {
+    top: 20px !important;
+    right: 20px !important;
+}
+
+.discount-modal .ngdialog-content .form-control {
+    background: #fff;
+    border-radius: 0;
+}
+
+.discount-modal .ngdialog-content .form-control:focus {
+    border-color: #000 !important;
+}
+
+.discount-modal .submit-discount-btn {
+    border-radius: 0;
+    border: 1px solid #002028;
+    color: #fff !important;
+    background: rgba(68,68,68,1) !important;
+    vertical-align: top;
+}
+
+.discount-modal .form-group {
+    width: 70%;
+}
+
+.discount-modal .form-control {
+    width: 100%;
+}
+
+
+.fb-btn-wr {
+    margin-bottom: 18px;
+}
+
+.twitter-share-button {
+    margin-right: 15px;
+}
+
+.forgot-pass {
+    text-align: center;
+    color: #337ab7;
+}
+
+.forgot-pass small {
+    cursor: pointer;
+}
+
+
+.coming-soon {
+    margin: 50px 0 0;
+    font-size: 48px;
+    text-align: center;
+}
+
+.launch-title {
+    text-align: center;
+    font-size: 32px;
+    color: #2c2c2b;
+    margin: 40px 0 80px;
+}
+
+
+.esafety-img-wr {
+    text-align: center;
+    position: relative;
+}
+
+.esafety-img-wr img {
+    width: 1092px;
+}
+
+.esafety-img-wr a {
+    display: block;
+    position: absolute;
+    top: 8px;
+    width: 135px;
+    height: 34px;
+    line-height: 34px;
+    left: 0;
+    color: #000;
+    background: #FCE5CE;
+}
+
+.esafety-img-wr .to-early {
+    width: 122px;
+    left: 191px;
+}
+.esafety-img-wr .to-primary1 {
+    width: 120px;
+    left: 314px;
+}
+.esafety-img-wr .to-primary2 {
+    width: 148px;
+    left: 435px;
+}
+.esafety-img-wr .to-primary3 {
+    left: 585px;
+    width: 130px;
+}
+.esafety-img-wr .to-primary4 {
+    width: 116px;
+    left: 717px;
+}
+.esafety-img-wr .to-primary5 {
+    left: 835px;
+    width: 130px;
+}
+.esafety-img-wr .to-primary6 {
+    width: 139px;
+    left: 966px;
+}
+
+.title-note {
+    font-style: italic;
+}
+
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.embed-responsive.embed-responsive-16by9 {
+    padding-bottom: 56.25%;
+}
+
+.embed-responsive-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+.gray-block {
+    margin-top: 30px;
+    background: #eee;
+    border: 1px solid #000;
+    padding: 10px;
+    color: #000;
+}
+
+.testimonials-block {
+    font-style: italic;
+    margin-bottom: 80px;
+}
+
+.testimonials-block .title {
+    font-size: 24px;
+}

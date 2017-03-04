@@ -1,0 +1,15 @@
+<div class="inmodal">
+    <div class="col-md-12">
+        <div class="inbox-title">
+            <h1>Update subscription </h1>
+        </div>
+
+        Subscription price:
+        <strong>{{(countrySettings.currency | currencyFlag) + '' + countrySettings.programPrice}}</strong>
+
+    </div>
+    <div class="col-md-12 text-right">
+        <button ng-click="confirm()" class="btn btn-primary">Confirm</button>
+        <button ng-click="cancel()" class="btn btn-white">Cancel</button>
+    </div>
+</div>

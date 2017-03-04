@@ -1,0 +1,27 @@
+<nav class="home-nav">
+    <div class="row">
+        <div class="col-md-2">
+            <a ui-sref="index.schoolPlan">My Dashboard</a>
+        </div>
+        <!-- For forum integrated -->
+        <div class="col-md-2">
+            <a ng-href="{{vm.constants.FORUM_URL}}" ng-class="{active: $root.currentState.includes('forum')}">Community Forum</a>
+        </div>
+        <!-- For forum with coming soon page -->
+        <!--<div class="col-md-2">-->
+            <!--<a ui-sref="home.forum" ng-class="{active: $root.currentState.includes('forum')}">Community Forum</a>-->
+        <!--</div>-->
+        <div class="col-md-2">
+            <a ui-sref="home.edtech.base" ng-class="{active: $root.currentState.includes('edtech')}">Ed-tech Tips</a>
+        </div>
+        <div class="col-md-2">
+            <a ui-sref="home.eSafety.base" ng-class="{active: $root.currentState.includes('eSafety')}">Online Safety</a>
+        </div>
+        <div class="col-md-2">
+            <a ui-sref="home.additionalResources.base" ng-class="{active: $root.currentState.includes('additionalResources')}">Additional Resources</a>
+        </div>
+        <div class="col-md-2">
+            <a ui-sref="home.otherServices" ng-class="{active: $root.currentState.includes('otherServices')}">Other Services</a>
+        </div>
+    </div>
+</nav>

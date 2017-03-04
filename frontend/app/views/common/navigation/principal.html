@@ -1,0 +1,52 @@
+<li class="">
+    <div class="dropdown profile-element" uib-dropdown>
+        <div class="change-avatar btn-file">
+            <span class="fileinput-new">Click here to add school logo</span>
+            <input type="file" file-model="$root.uploadedFile">
+            </span>
+        </div>
+
+        <school-avatar></school-avatar>
+
+        <div class="user-name-nav-box">
+            <span class="clear">
+                <span class="block m-t-xs">
+                    <strong class="font-bold">{{ $root.profile.firstName + ' ' + $root.profile.lastName }}</strong>
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="logo-element">
+        Educ8
+    </div>
+</li>
+<li ng-if="!$root.profile.school.limitedAccess">
+    <a ui-sref="index.activity" ng-class="{active: $root.currentState.includes('activity')}">
+        <i class="fa fa-dashboard"></i>
+        <span class="nav-label">Activity/Staff</span>
+    </a>
+</li>
+<li ng-if="!$root.profile.school.limitedAccess">
+    <a ui-sref="index.schoolPlan" ng-class="{active: $root.currentState.includes('schoolPlan')}">
+        <i class="fa fa-calendar-o"></i>
+        <span class="nav-label">School Plan</span>
+    </a>
+</li>
+<li ng-if="!$root.profile.school.limitedAccess">
+    <a ui-sref="index.schoolClasses.completed" ng-class="{active: $root.currentState.includes('schoolClasses')}">
+        <i class="fa fa-check"></i>
+        <span class="nav-label">Classes</span>
+    </a>
+</li>
+<li ng-if="!$root.profile.school.limitedAccess">
+    <a ui-sref="index.feedback" ng-class="{active: $root.currentState.includes('feedback')}">
+        <i class="fa fa-envelope-o"></i>
+        <span class="nav-label">Feedback</span>
+    </a>
+</li>
+<li>
+    <a ui-sref="index.settings" ng-class="{active: $root.currentState.includes('settings')}">
+        <i class="fa fa-gears"></i>
+        <span class="nav-label">Settings</span>
+    </a>
+</li>

@@ -1,0 +1,14 @@
+<h2>{{vm.lesson.course.name}}</h2>
+<h3 class="m-b-lg">{{vm.lesson.name}}</h3>
+
+<div class="lesson-descr">
+    {{vm.lesson.course.description}}
+</div>
+
+
+<ng-include ng-if="$root.isStudent()" src="'js/components/lessons/detail/nav_student.html'"/></ng-include>
+<ng-include ng-if="!$root.isStudent()" src="'js/components/lessons/detail/nav_teacher.html'"/></ng-include>
+
+
+<ng-include ng-if="$root.isTeacher()" src="'js/components/lessons/detail/comment_add.html'"/></ng-include>
+<ng-include ng-if="$root.isStudent()" src="'js/components/lessons/detail/comment_view.html'"/></ng-include>

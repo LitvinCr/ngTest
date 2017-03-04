@@ -1,0 +1,25 @@
+<div class="signUpColumns animated fadeInDown">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox-title text-center">
+                <h1 class="m-b-md">{{vm.course.name}} lessons</h1>
+                <button type="button" ng-click="main.logOut()" class="btn btn-sticky btn-primary m-b">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+                <a ui-sref="signup.confirmation" class="btn btn-sticky left btn-primary m-b">Back to plan</a>
+            </div>
+
+            <div class="ibox-content">
+                <table ng-if="vm.lessons.list" class="table main-table alt">
+                    <tbody>
+                        <tr ng-repeat="lesson in vm.lessons.list track by $index">
+                            <td>
+                                <a ui-sref="signup.lesson({id: lesson.id, course: vm.course.name})" ng-bind="lesson.name"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

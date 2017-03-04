@@ -1,0 +1,18 @@
+<article class="dialog">
+    <div class="text-center">
+        <h2 ng-bind="vm.detailPlan.name"></h2>
+        <em class="notation" ng-if="vm.detailPlan.description" ng-bind="vm.detailPlan.description"></em>
+    </div>
+    <div class="ibox-title row text-center">
+        <div class="col-lg-4"><button class="btn btn-primary" ng-click="vm.addToPlan(vm.detailPlan, vm.detailPlan.coursesToPlans.period, vm.detailPlan.coursesToPlans.type)">Add to Plan</button></div>
+        <div class="col-lg-4">
+            <button class="btn btn-primary" ng-click="vm.viewOtherOptions(vm.detailPlan.coursesToPlans.period, vm.detailPlan.coursesToPlans.type)">
+                View other options
+            </button>
+        </div>
+        <div class="col-lg-4"><button class="btn btn-primary" ng-click="vm.viewLessons(vm.detailPlan)">View Lessons</button></div>
+    </div>
+    <div ng-if="vm.detailPlan.youtubeId" class="clearfix text-right">
+        <iframe width="560" height="320" ng-src="{{vm.detailPlan.videoLink()}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+</article>

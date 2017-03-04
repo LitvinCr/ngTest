@@ -1,0 +1,24 @@
+<div class="row page-title-wr">
+    <div class="col-md-12">
+        <div class="page-title">Additional Resources</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <ul class="list-unstyled page-nav">
+            <li>
+                <a ui-sref="home.additionalResources.teacherTools" ng-class="{active: $root.currentState.includes('teacherTools')}">Teacher Tools</a>
+            </li>
+            <li>
+                <a ui-sref="home.additionalResources.staffTraining" ng-class="{active: $root.currentState.includes('staffTraining')}">Staff Training</a>
+            </li>
+            <li>
+                <a ui-sref="home.additionalResources.studentResources" ng-class="{active: $root.currentState.includes('studentResources')}">Student Resources</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div ui-view></div>
+    </div>
+</div>
