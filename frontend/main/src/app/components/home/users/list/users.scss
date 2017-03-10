@@ -1,5 +1,9 @@
 @import "../../../../../theme/sass/conf/conf";
 
+.table-fixed {
+  table-layout: fixed;
+}
+
 .ng2-smart-table-container table.ng2-smart-table {
   th, td {
     border: 1px solid $border-light !important;

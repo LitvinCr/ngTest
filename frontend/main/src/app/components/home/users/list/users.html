@@ -1,5 +1,28 @@
 <div class="row">
   <div class="col-md-12">
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+    <div class="vertical-scroll">
+      <table class="table table-striped table-fixed">
+        <thead>
+        <tr>
+          <th class="table-id">#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Birthday</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of users">
+          <td class="table-id">{{ item.id }}</td>
+          <td>
+            <a [routerLink]="[item.id]">{{ item.name }}</a>
+          </td>
+          <td><a class="email-link" href="mailto:{{ item.email }}">{{ item.email }}</a></td>
+          <td>{{ item.role }}</td>
+          <td>{{ item.birthday }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

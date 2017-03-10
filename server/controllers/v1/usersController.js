@@ -123,22 +123,7 @@ class UsersController extends Controller {
             userId = req.user.id;
         }
 
-        Models.users.findById(userId, {
-            include: [
-                {
-                    model: Models.schools,
-                    as: 'school'
-                },
-                {
-                    model: Models.classes,
-                    as: 'class'
-                },
-                {
-                    model: Models.countrySettings,
-                    as: 'countrySetting'
-                }
-            ]
-        })
+        Models.users.findById(userId)
             .then(function (user) {
                 if (!user) {
                     let err = new Error();
