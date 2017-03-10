@@ -5,7 +5,7 @@
     <li>
       <a routerLink="/home/dashboard" routerLinkActive="active">Dashboard</a>
     </li>
-    <li>
+    <li *ngIf="isAdmin()">
       <a routerLink="/home/users" routerLinkActive="active">Users</a>
     </li>
   </ul>

@@ -1,7 +1,7 @@
 ﻿import {Injectable} from '@angular/core';
 import {Http, Headers, Response} from '@angular/http';
 import {Observable} from 'rxjs';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthenticationService {
@@ -62,5 +62,15 @@ export class AuthenticationService {
     // clear token remove user from local storage to log user out
     this.token = null;
     localStorage.removeItem('currentUser');
+  }
+
+  loggedIn(): boolean {
+    return !!this.token;
+  }
+
+  isAdmin(): boolean {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    return currentUser.role === 2;
   }
 }

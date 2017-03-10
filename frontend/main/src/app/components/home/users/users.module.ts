@@ -6,6 +6,8 @@ import { Users } from './list/users.component';
 import { UsersDetail } from './detail/detail.component';
 import { routing }       from './users.routing';
 
+import { UserRolePipe } from '../../../pipes/user-role.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +16,8 @@ import { routing }       from './users.routing';
   ],
   declarations: [
     Users,
-    UsersDetail
+    UsersDetail,
+    UserRolePipe
   ],
   providers: [
   ]

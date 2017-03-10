@@ -18,8 +18,8 @@
             <a [routerLink]="[item.id]">{{ item.name }}</a>
           </td>
           <td><a class="email-link" href="mailto:{{ item.email }}">{{ item.email }}</a></td>
-          <td>{{ item.role }}</td>
-          <td>{{ item.birthday }}</td>
+          <td>{{ item.role | userRole }}</td>
+          <td>{{ item.birthday | date }}</td>
         </tr>
         </tbody>
       </table>

@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/signin']);
   }
 
+  public isAdmin(): boolean {
+    return this.authenticationService.isAdmin();
+  }
+
   ngOnInit() {
 
   }
