@@ -6,7 +6,6 @@ const Models = require('./../models/v1');
 //modules
 const jwt = require('jsonwebtoken');
 const sha256 = require('sha256');
-const youTubeID = require('get-youtube-id');
 
 const config = require('./../../config');
 
@@ -48,14 +47,7 @@ class Middlewares {
                 return next(error);
             }
 
-            Models.users.findById(tokenData.id, {
-                include: [
-                    {
-                        model: Models.schools,
-                        as: 'school'
-                    }
-                ]
-            })
+            Models.users.findById(tokenData.id)
                 .then(function (user) {
                     if (!user || user.length === 0) {
                         let error = new Error();
@@ -69,19 +61,6 @@ class Middlewares {
                 })
                 .catch(next)
         });
-    }
-
-    static getAuthenticationFromUrl(req, res, next) {
-
-        if(!req.query.token){
-            let error = new Error();
-            error.status = 401;
-            error.message = 'not valid token!';
-            return next(error);
-        }
-
-        req.headers.authorization = req.query.token;
-        next();
     }
 
     /**
@@ -124,27 +103,6 @@ class Middlewares {
                 next();
             })
             .catch(next)
-    }
-
-    /**
-     * check valid admin role
-     *
-     * @param req
-     * @param res
-     * @param next
-     * @returns {*}
-     */
-    static checkAdminRole(req, res, next) {
-
-        if (req.user.role < Models.users.ROLE().ADMIN) {
-            let error = new Error();
-            error.status = 405;
-            error.message = 'Method not allowed!';
-
-            return next(error);
-        }
-
-        next();
     }
 }
 

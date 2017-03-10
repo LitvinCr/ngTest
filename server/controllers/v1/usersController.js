@@ -13,37 +13,14 @@ class UsersController extends Controller {
     constructor(version) {
         super(version);
 
-        this.setPlanReviewStep = [
-            this._setPlanReviewStep
-        ];
-
-        this.setPlanCreatingStep = [
-            this._setPlanCreatingStep
-        ];
-
-        this.backToPlanReview = [
-            this._backToPlanReview
-        ];
-
         this.getList = [
             this.validateLimits,
             this._createSearchParams,
-            this._getAll,
-            this.sendResponse
+            this._getAll
         ];
 
         this.getOne = [
             this._getOne
-        ];
-
-        this.mailDelivery = [
-            this.validator.users.sendEmails,
-            this._getUsersEmails,
-            this._sendMails
-        ];
-
-        this.getCountrySettings= [
-            this._getCountrySettings
         ];
 
         this.restorePassword = [
@@ -52,132 +29,6 @@ class UsersController extends Controller {
             this._restorePassword,
             this.sendResponse
         ];
-    }
-
-    /**
-     * Set plan creating step
-     * @param req
-     * @param res
-     * @param next
-     * @returns {*}
-     * @private
-     */
-    _setPlanCreatingStep (req, res, next) {
-        if(req.user.registrationStep !== Models.users.REGISTRATION_STEPS().PAYMENT){
-            let err = new Error();
-            err.status = 400;
-            err.message = 'Current step should be "account creating"!';
-            return next(err)
-        }
-
-        req.user.update({
-            registrationStep: Models.users.REGISTRATION_STEPS().PLAN_CREATING
-        })
-            .then(function(){
-                return res.send();
-            })
-            .catch(next);
-    }
-
-    /**
-     * back to plan preview
-     * @param req
-     * @param res
-     * @param next
-     * @returns {*}
-     * @private
-     */
-    _backToPlanReview (req, res, next) {
-        if(req.user.registrationStep !== Models.users.REGISTRATION_STEPS().PLAN_PREVIEW){
-            let err = new Error();
-            err.status = 400;
-            err.message = 'Current step should be "account creating"!';
-            return next(err)
-        }
-
-        req.user.update({
-            registrationStep: Models.users.REGISTRATION_STEPS().ACCOUNT_CREATION
-        })
-            .then(function(){
-                return res.send();
-            })
-            .catch(next);
-    }
-
-    /**
-     * update user registration step - set plan review
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _setPlanReviewStep (req, res, next) {
-        if(req.user.registrationStep !== Models.users.REGISTRATION_STEPS().ACCOUNT_CREATION){
-            let err = new Error();
-            err.status = 400;
-            err.message = 'Current step should be "account creating"!';
-            return next(err)
-        }
-
-        req.user.update({
-            registrationStep: Models.users.REGISTRATION_STEPS().PLAN_PREVIEW
-        })
-            .then(function(){
-                return res.send();
-            })
-            .catch(next);
-    }
-
-    /**
-     * get user country settings
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _getCountrySettings (req, res, next) {
-        req.user.getCountrySetting()
-            .then(function (countrySettings) {
-                let formattedData = Models.countrySettings.format().base(countrySettings, req.user, Models);
-
-                res.send(formattedData)
-            })
-            .catch(next)
-    }
-
-    /**
-     *
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _getUsersEmails(req, res, next){
-        var where = {};
-
-        if(!req.body.users.length){
-            let err = new Error();
-            err.status = 401;
-            err.message = 'Please select user!';
-            return next(err)
-        }
-
-        where.id = {
-            $in: req.body.users
-        };
-
-        Models.users.findAll({
-            where: where
-        })
-            .then(function(result){
-                req.emails = [];
-                result.forEach(function(item){
-                    req.emails.push(item.email)
-                });
-
-                next();
-            })
-            .catch(next)
     }
 
     /**
@@ -211,12 +62,14 @@ class UsersController extends Controller {
 
         Models.users.findAndCountAll(params)
             .then(function (result) {
-                req.payload = {
-                    count: result.count,
-                    list: Models.users.format().short(result.rows)
-                };
+                // req.payload = {
+                //     count: result.count,
+                //     list: Models.users.format().base(result.rows)
+                // };
 
-                next();
+                // next();
+
+                res.send(Models.users.format().base(result.rows));
             })
             .catch(next)
     }
@@ -294,7 +147,7 @@ class UsersController extends Controller {
                     return next(err)
                 }
 
-                res.send(Models.users.format().short(user));
+                res.send(Models.users.format().base(user));
             })
             .catch(next)
     }

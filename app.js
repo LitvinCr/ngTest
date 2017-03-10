@@ -7,7 +7,6 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 const env = process.env.NODE_ENV || 'dev';
-const subscriptionsCron = require('./commands/cron/subscriptions');
 
 if (env == 'prod') { //https configurations
     let options = {
@@ -29,7 +28,6 @@ if (env == 'prod') { //https configurations
 function serverStartCallback() {
 
     logger.info("Express server is now live at port " + this.address().port + " with " + env + " config");
-    subscriptionsCron.start();
 }
 
 module.exports = app;

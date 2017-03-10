@@ -78,23 +78,7 @@ class SigninController extends Controller {
             {
                 where: {
                     email: req.body.email
-                },
-                include: [
-                    {
-                        model: Models.schools,
-                        as: 'school',
-                        include: [
-                            {
-                                model: Models.subscriptions,
-                                as: 'subscriptions'
-                            }
-                        ]
-                    },
-                    {
-                        model: Models.classes,
-                        as: 'class'
-                    }
-                ]
+                }
             }
         ).then(function (user) {
             if (!user) {

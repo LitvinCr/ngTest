@@ -27,24 +27,11 @@ class SignupController extends Controller {
             basic: [
                 this.validator.signup.basic,
                 self._checkUserExist,
-                self._selectRole,
                 self._passwordHandler,
                 self._saveUser,
                 Middlewares.createAndSaveRefreshToken,
                 Middlewares.createToken,
                 self.sendResponse
-            ],
-
-            principal: [
-                this.validator.signup.principal,
-                self._checkUserExist,
-                self._passwordHandler,
-                // self._checkSchoolExistByName,
-                self._savePrincipal,
-                self._setUserToSchool,
-                Middlewares.createAndSaveRefreshToken,
-                Middlewares.createToken,
-                self._getPrincipalFullData
             ]
         };
 
@@ -59,65 +46,6 @@ class SignupController extends Controller {
         });
 
         require('async').series(operations, next);
-    }
-
-    /**
-     * set user school
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _setUserToSchool(req, res, next){
-        req.user.setSchool(req.school.id)
-            .then(function(user){
-                next()
-            })
-            .catch(next)
-    }
-
-    /**
-     * select created user role
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _selectRole(req, res, next) {
-        let adminRole = req.user.role;
-        const ROLES = Models.users.ROLE();
-
-        switch (adminRole) {
-            case ROLES.ADMIN:
-                if (
-                    req.body.role &&
-                    ([ROLES.TEACHER, ROLES.PRINCIPAL].indexOf(req.body.role) !== -1)
-                ) {
-                    let error = new Error();
-                    error.status = 401;
-                    error.message = 'not valid role!';
-                    return next(error);
-                }
-
-                break;
-
-            case ROLES.PRINCIPAL:
-                req.body.role = ROLES.TEACHER;
-                break;
-
-            case ROLES.TEACHER:
-                req.body.role = ROLES.STUDENT;
-                break;
-
-            default:
-
-                let error = new Error();
-                error.status = 401;
-                error.message = 'Forbidden action!';
-                return next(error);
-        }
-
-        next();
     }
 
     /**
@@ -145,8 +73,8 @@ class SignupController extends Controller {
                 req.local = {
                     email: req.body.email,
                     password: req.body.password,
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName
+                    name: req.body.name,
+                    role: Models.users.ROLE().USER
                 };
                 next()
 
@@ -193,141 +121,6 @@ class SignupController extends Controller {
                 next();
             })
             .catch(next);
-    }
-
-    /**
-     * check school with this name already exist
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _checkSchoolExistByName(req, res, next) {
-        Models.schools.findOne({
-            where: {
-                name: req.body.school.name
-            }
-        })
-            .then(function (school) {
-                if (school) {
-                    let error = new Error();
-                    error.message = 'School with this name already registered!';
-                    error.status = 409;
-                    return next(error);
-                }
-
-                next();
-            })
-            .catch(next)
-    }
-
-    /**
-     * Crete new user, school and school
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _savePrincipal(req, res, next) {
-        
-        req.local.role = Models.users.ROLE().PRINCIPAL;
-        req.local.registrationStep = Models.users.REGISTRATION_STEPS().ACCOUNT_CREATION;
-
-        Models.sequelize.transaction().then(function (t) {
-            return Models.users.create(req.local, {transaction: t})
-                .then(function (principal) {
-
-                    req.user = principal;
-
-                    let dataToSave = {
-                        name: req.body.school.name,
-                        classSetsCombination: req.body.school.classSets.sort().join(''),
-                        principalId: principal.id
-                    };
-                    return Models.schools.create(dataToSave, {transaction: t})
-                        .then(function (school) {
-
-                            req.school = school;
-
-                            let dataToSave = [];
-
-                            req.body.school.classSets.forEach(function (item) {
-                                dataToSave.push({
-                                    schoolId: school.id,
-                                    classSetId: item
-                                })
-                            });
-
-                            return Models.schoolsToClassSets.bulkCreate(dataToSave, {transaction: t})
-                                .then(function () {
-                                    t.commit();
-                                    next();
-                                })
-                                .catch(function (err) {
-                                    t.rollback();
-                                    next(err)
-                                });
-                        });
-                })
-        });
-    }
-
-    /**
-     * get principal full data and school plan
-     * @param req
-     * @param res
-     * @param next
-     * @private
-     */
-    _getPrincipalFullData(req, res, next) {
-        Models.schools.findOne({
-            where: {
-                principalId: req.payload.id
-            },
-           include: [
-               {
-                   model: Models.classSets,
-                   as: 'classSets'
-               }
-           ]
-        })
-            .then(function(school){
-                Models.plans.findOne({
-                    where: {
-                        classSetsCombination: school.classSetsCombination,
-                        schoolId: null
-                    },
-                    include: [
-                        {
-                            model: Models.plansTypes,
-                            as: 'types'
-                        },
-                        {
-                            model: Models.courses,
-                            as: 'courses'
-                        }
-                    ]
-                })
-                    .then(function(plan){
-
-                        req.payload.school = Models.schools.format().base(school);
-                        req.payload.school.classSets = Models.schoolsToClassSets.format().base(req.payload.school.classSets);
-
-                        if(plan){
-                            plan = Models.plans.format().base(plan);
-                            plan.courses = Models.courses.format().base(plan.courses);
-                        }
-
-                        let dataToSend = {
-                            user: req.payload,
-                            plan: plan
-                        };
-
-                        res.send(dataToSend)
-                    })
-                    .catch(next)
-            })
-            .catch(next)
     }
 }
 

@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', router.api.default);
 
 
-app.use('/', express.static(__dirname + '/../frontend/dist/app'));
+// app.use('/', express.static(__dirname + '/../frontend/dist/app'));
 app.use('/', router.app.default);
 
 //set up http error handler

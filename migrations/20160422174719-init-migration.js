@@ -32,6 +32,10 @@ module.exports = {
                     type: Sequelize.DATE,
                     allowNull: true
                 },
+                refresh_token: {
+                    type: Sequelize.STRING,
+                    allowNull: false
+                },
                 created_at: {
                     type: Sequelize.DATE,
                     defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
@@ -39,10 +43,6 @@ module.exports = {
                 updated_at: {
                     type: Sequelize.DATE,
                     defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-                },
-                refresh_token: {
-                    type: Sequelize.STRING,
-                    allowNull: false
                 }
             },
             {

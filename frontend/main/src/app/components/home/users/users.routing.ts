@@ -1,0 +1,18 @@
+import { Routes, RouterModule }  from '@angular/router';
+
+import { Users } from './list/users.component';
+import { ModuleWithProviders } from '@angular/core';
+
+
+// noinspection TypeScriptValidateTypes
+export const routes: Routes = [
+  {
+    path: '',
+    component: Users,
+    children: [
+      // { path: ':id/detail', component: TreeViewComponent }
+    ]
+  }
+];
+
+export const routing: ModuleWithProviders = RouterModule.forChild(routes);
