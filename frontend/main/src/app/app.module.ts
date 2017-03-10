@@ -6,7 +6,7 @@ import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { appRoutes } from "./app.routes";
 import { RouterModule } from "@angular/router";
 
-import { AuthGuard } from './guards/index';
+import { AuthGuard, AdminGuard } from './guards/index';
 import { AuthenticationService, UserService } from './services/index';
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { NotFoundComponent } from './components/notfound/notfound.component';
   ],
   providers: [
     AuthGuard,
+    AdminGuard,
     AuthenticationService,
     UserService
   ],

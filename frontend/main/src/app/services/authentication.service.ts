@@ -17,12 +17,14 @@ export class AuthenticationService {
     return this.http.post('http://localhost:4010/api/v1/signin/basic', params)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let token = response.json() && response.json().payload.token;
+        let payload = response.json() && response.json().payload;
+        let token = payload.token;
+
         if (token) {
           this.token = token;
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({email: params.email, token: token}));
+          localStorage.setItem('currentUser', JSON.stringify({email: params.email, token: token, role: payload.role}));
 
           // return true to indicate successful login
           return true;
@@ -37,13 +39,15 @@ export class AuthenticationService {
     return this.http.post('http://localhost:4010/api/v1/signup/basic', params)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
-        let token = response.json() && response.json().payload.token;
+        let payload = response.json() && response.json().payload;
+        let token = payload.token;
+
         if (token) {
           // set token property
           this.token = token;
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({email: params.email, token: token}));
+          localStorage.setItem('currentUser', JSON.stringify({email: params.email, token: token, role: payload.role}));
 
           // return true to indicate successful login
           return true;

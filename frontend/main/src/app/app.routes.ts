@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import { AuthGuard } from './guards/index';
+import { AuthGuard, AdminGuard } from './guards/index';
 
 import {SigninComponent} from './components/signin/signin.component';
 import {SignupComponent} from "./components/signup/signup.component";
@@ -17,7 +17,11 @@ export const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: 'app/components/home/dashboard/dashboard.module#DashboardModule' },
-      { path: 'users', loadChildren: 'app/components/home/users/users.module#UsersModule' }
+      {
+        path: 'users',
+        loadChildren: 'app/components/home/users/users.module#UsersModule',
+        canActivate: [AdminGuard]
+      }
     ]
   },
   {path: '**', component: NotFoundComponent}
