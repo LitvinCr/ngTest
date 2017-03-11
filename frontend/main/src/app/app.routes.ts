@@ -6,6 +6,8 @@ import {SignupComponent} from "./components/signup/signup.component";
 import {HomeComponent} from "./components/home/home.component";
 import {NotFoundComponent} from './components/notfound/notfound.component';
 
+import { MoviesListComponent, MoviesDetailComponent } from './components/home/movies';
+
 export const appRoutes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
@@ -21,6 +23,14 @@ export const appRoutes: Routes = [
         path: 'users',
         loadChildren: 'app/components/home/users/users.module#UsersModule',
         canActivate: [AdminGuard]
+      },
+      {
+        path: 'movies',
+        component: MoviesListComponent,
+      },
+      {
+        path: 'movies/:id',
+        component: MoviesDetailComponent,
       }
     ]
   },

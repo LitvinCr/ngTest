@@ -10,7 +10,7 @@ import 'style-loader!./users.scss';
   styleUrls: ['./users.scss'],
   templateUrl: './users.html'
 })
-export class Users implements OnInit {
+export class UsersListComponent implements OnInit {
   users: User[] = [];
 
   constructor(private userService: UserService) {

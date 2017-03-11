@@ -9,7 +9,7 @@ import { UserService } from '../../../../services/index';
   styleUrls: ['./detail.scss'],
   templateUrl: './detail.html'
 })
-export class UsersDetail implements OnInit {
+export class UsersDetailComponent implements OnInit {
   userDetail = {};
 
   constructor(private userService: UserService,  private route: ActivatedRoute) {
